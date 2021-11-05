@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_Shared/_LayoutPage.cshtml";
+}
+
+
+
+
+<div class="col-md-12 ProductDiv">
+    <div class="row">
+        <div class="col-md-4" style="background-color:#f7f7f7;border:1px solid #e6e6e6;border-radius:5px;height:450px;margin:30px 400px">
+            <div class="col-md-12" style="margin:60px 120px;font-weight: bold; font-size: 20px">
+                <div class="row">
+                    <div class="TextHeader">ÜYE GİRİŞİ</div>
+                </div>
+            </div>
+
+            <form asp-controller="Customer" asp-action="Login" method="post">
+                <div class="col-md-10" style="text-align:center;margin-bottom:35px;margin-left:22px">
+                    <input type="text" class="form-control" name="KullaniciAdi" placeholder="E-posta Adresi/Telefon Numarası" />
+                </div>
+                <div class="col-md-10" style="text-align:center;margin-top:15px;margin-bottom:15px;margin-left:22px">
+                    <input type="password" class="form-control" name="KullaniciSifre" placeholder="Şifre" />
+                </div>
+
+                <div class="col-md-10" style="text-align:center;margin-top:55px;margin-left:22px">
+                    <button type="submit" class="btn btn-primary form-control">Giriş Yap</button>
+                </div>
+            </form>
+
+        </div>
+
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger" style="margin-top:15px;text-align:center">
+
+                        @Html.Raw(TempData["Error"])
+                    </div>
+                }
+          
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Shared/_LayoutPage.cshtml";
+}
+
+<style>
+    .product-img > a > img {
+        width: auto;
+        height: 200px;
+    }
+
+    .top-product-grids {
+        height: 400px;
+    }
+</style>
+
+@foreach (var item in ViewBag.Slides)
+{
+<div class="banner-agile">
+    <div class="container">
+        <h2>@item.Title</h2>
+        <p>@item.Description</p>
+        <a href= "/hakkimizda">Devamını Okuyun</a>
+    </div>
+</div>
+}
+<div class="banner-bootom-w3-agileits">
+    <div class="container">
+        <div class="col-md-5 bb-grids bb-left-agileits-w3layouts">
+            <a href="/kadin/1">
+                <div class="bb-left-agileits-w3layouts-inner">
+                    <h4>Kadın Giyim Ürünlerinde <span>%55'e Varan</span> </h4>
+                    <h3>İndirim </h3>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 bb-grids bb-middle-agileits-w3layouts">
+            <a href="/ayakkabi/24">
+                <div class="bb-middle-top">
+                    <h4>Kadın Ayakkabılarda<span>%55'e Varan</span></h4>
+                    <h3>İndirim </h3>
+                </div>
+            </a>
+            <a href="/taki-mucevher/201">
+                <div class="bb-middle-bottom">
+                    <h4>Takı&Mücevherlerde<span> %65'e Varan </span></h4>
+                    <h3>İndirim</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 bb-grids bb-right-agileits-w3layouts">
+            <a href="/saat/72">
+                <div class="bb-right-top">
+                    <h4> Erkek Saatlerde <span> %40'a Varan </span></h4>
+                    <h3> İndirim </h3>
+                </div>
+            </a>
+            <a href="/canta/25">
+                <div class="bb-right-bottom">
+                    <h4> Çantalarda <span> %60'a Varan </span>  </h4>
+                    <h3> İndirim </h3>
+                </div>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<script src="/Scripts/easyResponsiveTabs.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true   // 100% fit in a container
+        });
+    });
+</script>
+<div class="fandt">
+    <div class="container">
+        <div class="col-md-6 features">
+            <h3>Hizmetlerimiz</h3>
+            <div class="support">
+                <div class="col-md-2 ficon hvr-rectangle-out">
+                    <i class="fa fa-user " aria-hidden="true"></i>
+                </div>
+                <div class="col-md-10 ftext">
+                    <h4>7/24 Ücretsiz Online Destek</h4>
+                    <p>Online destek sistemimiz sayesinde dilediğiniz zaman bize ulaşabilir ve taleplerinizi iletebilirsiniz.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="shipping">
+                <div class="col-md-2 ficon hvr-rectangle-out">
+                    <i class="fa fa-bus" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-10 ftext">
+                    <h4>Ücretsiz Kargo</h4>
+                    <p>200 tl ve üzeri alışverişlerinizde kargo ücretsizdir.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="money-back">
+                <div class="col-md-2 ficon hvr-rectangle-out">
+                    <i class="fa fa-money" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-10 ftext">
+                    <h4>İade&Değişim</h4>
+                    <p>Sitemizden aldığınız ürünleri teslimat tarihinden itibaren en geç 14 gün içerisinde iade edebilir ya da değiştirebilirsiniz.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <script src="/Scripts/jquery.wmuSlider.js"></script>
+            <script>
+                $('.example1').wmuSlider();
+            </script>
+        </div>
+        </div>
+    </div>
+ 
+<div class="newsletter">
+    <div class="container">
+        <div class="col-md-6 w3agile_newsletter_left">
+            <h2>E-Bülten</h2>
+            <p>Moda haberlerini takip etmek ve indirim fırsatlarından haberdar olmak için e-bültenimize üye olun.</p>
+        </div>
+        <div class="col-md-6 w3agile_newsletter_right">
+            <form action="#" method="post">
+                <input type="email" name="Email" value="E-posta adresinizi girin." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-posta adresinizi girin.';}" required="">
+                <input type="submit" value="Üye Ol" />
+            </form>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+ 
+
+
+
+
+
+
+
+
+
+
+

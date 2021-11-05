@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/_Shared/_LayoutPage.cshtml";
+  
+}
+
+<div class="col-md-12" style="background-color:#f3f3f3;margin-bottom:15px;margin-top:15px;">
+    <div class="row">
+        <div class="TextHeader">SİPARİŞLERİM</div>
+    </div>
+</div>
+
+
+<div class="col-md-12 Customer">
+    <div class="row">
+        <div class="col-md-3 AccountDetails">
+            <ul class="account" style="list-style-type:none">
+                <li><a href="/hesabim">Hesabım</a></li>
+                <li><a href="/siparislerim">Siparişlerim</a></li>
+                <li><a href="#">İadelerim</a></li>
+                <li><a href="#">Adreslerim</a></li>
+                <li><a href="/Cikis">Çıkış</a></li>
+            </ul>
+        </div>
+    </div>
+ </div>
+
+<div class="col-md-12 Orders">
+    <form asp-controller="Customer" asp-action="Orders">
+        <div class="box-body">
+
+            <table id="example1" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Sipariş</th>
+                        <th>Tarihi</th>
+                        <th>Durumu</th>
+                        <th>Fiyat</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.OrderDate</td>
+                                <td>@item.OrderStatus</td>
+                                <td>@item.TotalPrice.ToString("C")</td>
+                        
+                            </tr>
+                        }
+                    }
+            </table>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/_Shared/_LayoutPage.cshtml";
+}
+
+
+
+
+<div class="col-md-12" style="margin:10px 12px;">
+    <div class="row">
+        <div class="TextHeader">@ViewBag.Kategori.Name</div>
+    </div>
+</div>
+
+
+<div class="col-md-2">
+    <div class="row">
+        <h1 style="font-weight:bold;font-size:15px;text-align:left"> ALT KATEGORİLER </h1>
+        @if (ViewBag.AltKategori != null)
+        {
+            <ul style="padding:0;margin:0;list-style:none;">
+                @foreach (var item in ViewBag.AltKategori)
+                {
+                    <li style=" " display:block;">
+                        <a href="/@UIWeb.YaziTemizle.Temizle(item.Name)/@item.Id"
+                           style="display:block;padding:10px;color:#151515;width:100%;">@item.Name</a>
+                    </li>
+                }
+
+            </ul>
+        }
+    </div>
+</div>
+<div class="col-md-8 col-sm-8 women-dresses">
+    <div class="women-set1">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+        <div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
+            <a href="/urun/@UIWeb.YaziTemizle.Temizle(item.Name)/@item.Id">
+                <div class="product-img">
+
+                    <img src="/images/Products/@item.MainImage" alt="@item.Name" />
+                    
+                </div>
+            </a>
+
+            <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+            <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+            <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+            <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+            <i class="fa fa-star gray-star" aria-hidden="true"></i>
+            <h4>@item.Name</h4>
+
+            @if (item.DiscountRate != 0)
+            {
+                <h5 style="font-size:15px; font-weight:normal">@item.Price.ToString("N") TL</h5>
+                <h6 style="font-size:17px; font-weight:bold">@item.Discount.ToString("N") TL</h6>
+
+                <div class="discount-rate" style="color:#ff0000;font-weight:bold"> %@item.DiscountRate İndirim </div>
+            }
+            else
+            {
+                <h6 style="font-size:17px; font-weight:bold">@item.Discount.ToString("N") TL</h6>
+            }
+        </div>
+            }
+
+        }
+
+        else
+
+        {
+            <div class="col-md-12" style="padding:25px;text-align:center;font-size:25px;">ÜRÜN BULUNAMADI.</div>
+        }
+
+ </div>
+</div>
+
+
+
+
+<div class="col-md-2 product-filter">
+    <ul style="list-style:none">
+        <li><a href="/@ViewContext.RouteData.Values["GetName"]/@ViewContext.RouteData.Values["id"]?Sira=FGA" style="display: block; padding: 10px; color: #151515; width: 100%">Fiyata Göre Artan</a></li>
+        <li><a href="/@ViewContext.RouteData.Values["GetName"]/@ViewContext.RouteData.Values["id"]?Sira=FGAZ" style="display: block; padding: 10px; color: #151515; width: 100%">Fiyata Göre Azalan</a></li>
+        <li><a href="/@ViewContext.RouteData.Values["GetName"]/@ViewContext.RouteData.Values["id"]?Sira=AZ" style="display: block; padding: 10px; color: #151515; width: 100%">İsme Göre A-Z</a></li>
+        <li><a href="/@ViewContext.RouteData.Values["GetName"]/@ViewContext.RouteData.Values["id"]?Sira=ZA" style="display:block;padding:10px;color:#151515;width:100%">İsme Göre Z-A</a></li>
+    </ul>
+</div>
+<div class="clearfix"></div>
+
+<div class="newsletter">
+    <div class="container">
+        <div class="col-md-6 w3agile_newsletter_left">
+            <h2>E-Bülten</h2>
+            <p>Moda haberlerini takip etmek ve indirim fırsatlarından haberdar olmak için e-bültenimize üye olun.</p>
+        </div>
+        <div class="col-md-6 w3agile_newsletter_right">
+            <form action="#" method="post">
+                <input type="email" name="E-posta" value="E-posta adresinizi girin." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-posta adresinizi girin.';}" required="">
+                <input type="submit" value="Üye Ol" />
+            </form>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

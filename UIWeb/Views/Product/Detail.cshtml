@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/_Shared/_LayoutPage.cshtml";
+}
+
+<style>
+    input[type="radio"] + label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+</style>
+<div class="products">
+    <div class="container">
+        <div class="single-page">
+            <div class="single-page-row" id="detail-21">
+                <div class="col-md-6 single-top-left">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li data-thumb="/images/Products/@Model.MainImage">
+                                <div class="thumb-image detail_images"> <img src="/images/Products/@Model.MainImage" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                            </li>
+
+                            @if (ViewBag.Images != null)
+                             {
+                                foreach (var item in ViewBag.Images)
+                                {
+                                    <li data-thumb="/images/Products/detail/@item.Name">
+                                        <div class="thumb-image"> <img src="/images/Products/detail/@item.Name" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                                    </li>
+                                }
+                             }
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-6 single-top-right">
+                    <h3 class="item_name">@Model.Name</h3>
+
+
+
+                    <div class="single-price" style="width:600px">
+                        <ul>
+                            @if (Model.DiscountRate != 0)
+                            {
+                                <li><del>@Model.Price.ToString("N") TL</del></li>
+                                <li>@Model.Discount.ToString("N") TL</li>
+                                <li><span class="w3off">%@Html.Raw(Math.Truncate((Model.Price - Model.Discount) / (Model.Price) * 100)).ToString() İndirim</span></li>
+
+                            }
+                            else
+                            {
+                                <li style="font-weight:bold">@Model.Discount.ToString("N") TL</li>
+
+                            }
+                        </ul>
+                    </div>
+                    <div class="stock">
+                        <span style="font-weight:bold"> Stok Durumu</span> : @if (Model.Stock > 0)
+                        {
+                            <span>Stokta @Model.Stock adet ürün var.</span>
+                        }
+                        else
+                        {
+                            <span style="color:red">Tükendi</span>
+                        }
+                    </div>
+
+
+                    @if (ViewBag.Variants != null)
+                    {
+                        foreach (var groups in ViewBag.Variants)
+                        {
+                            <div class="variantgroups" style="font-weight:bold;font-size:18px;margin-top:10px">
+                                @groups.Key:
+                            </div>
+
+                            <div class="@groups.Key" style="margin-top:10px;display:flex;flex-wrap:wrap;font-size:18px;padding-right:5px">
+
+                                @foreach (var item in groups)
+                                {
+
+                                    bool isChecked = Model.Name.Contains(item.Name);
+
+                                    <input type="radio" id="@item.Id" name="@groups.Key" class="variants" value="@item.Id" @(isChecked ? "checked" : "")>
+                                    <label for=" @item.Id">@item.Name</label><br>
+
+
+                                }
+
+
+                            </div>
+                        }
+
+
+                    }
+
+                    <button class="w3ls-cart" onclick="JSVaryantSepeteEkle(@Model.Id)"> Sepete Ekle </button>
+
+                </div>
+                <div class="clearfix"> </div>
+                <div class="delivery">
+                    <span style="font-weight:bold">Tahmini Teslimat Tarihi </span>: @Model.DeliveryDate
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="collpse tabs">
+
+            <div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fa fa-file-text-o fa-icon" aria-hidden="true"></i> Ürün Bilgisi <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            @Html.Raw(Model.Description)
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a class="collapsed pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="fa fa-info-circle fa-icon" aria-hidden="true"></i> Ürün Detayı <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                @Html.Raw(Model.Explanation)
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ </div>
+    <script src="/Scripts/jquery.flexslider.js"></script>
+    <link href="/Styles/flexslider.css" rel="stylesheet" type="text/css" media="screen" />
+    <script>
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+    <script src="/Scripts/imagezoom.js"></script>
+    <script src="/Scripts/JSONAJAXSEPET.js"></script>

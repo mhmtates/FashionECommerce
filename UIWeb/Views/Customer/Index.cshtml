@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/_Shared/_LayoutPage.cshtml";
+}
+
+<div class="col-md-12" style="margin-top:20px;margin-left:30px;margin-bottom:20px;font-weight:bold;font-size:20px">
+    <div class="row">
+        <div class="TextHeader">ÜYE GİRİŞİ/ÜYE OLMA SAYFASI</div>
+    </div>
+</div>
+
+
+<div class="col-md-12 ProductDiv">
+    <div class="row">
+
+        <div class="col-md-4" style="background-color:#f7f7f7;border:1px solid #e6e6e6;border-radius:5px;height:450px;margin:30px 50px" >
+            <div class="col-md-12" style="margin:60px 120px;font-weight: bold; font-size: 20px">
+                <div class="row">
+                    <div class="TextHeader">ÜYE GİRİŞİ</div>
+                </div>
+            </div>
+
+            <form asp-controller="Customer" asp-action="Login" method="post">
+                <div class="col-md-10" style="text-align:center;margin-bottom:35px;margin-left:22px">
+                    <input type="text" class="form-control" name="KullaniciAdi" placeholder="E-posta Adresi/Telefon Numarası" />
+                </div>
+                <div class="col-md-10" style="text-align:center;margin-top:15px;margin-bottom:15px;margin-left:22px">
+                    <input type="password" class="form-control" name="KullaniciSifre" placeholder="Şifre" />
+                </div>
+
+                <div class="col-md-10" style="text-align:center;margin-top:55px;margin-left:22px">
+                    <button type="submit" class="btn btn-primary form-control">Giriş Yap</button>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <div class="col-md-12" style="background-color:#f7f7f7;border:1px solid #e6e6e6;border-radius:5px;padding-bottom:15px;margin:30px 10px">
+                <div class="col-md-12" style="margin-bottom:15px;margin-top:20px;margin-left:140px;font-weight:bold;font-size:20px">
+                    <div class="row">
+                        <div class="TextHeader"> YENİ ÜYE BİLGİLERİ</div>
+                    </div>
+                </div>
+                <form asp-controller="Customer" asp-action="Register" method="post">
+
+                    <div class="col-md-10" style="text-align:center;margin-top:15px;margin-bottom:15px;margin-left:40px">
+                        <input type="text" class="form-control" name="NameSurname" placeholder="Ad Soyad :" required />
+                    </div>
+                    <div class="col-md-10" style="text-align:center;margin-top:15px;margin-bottom:15px;margin-left:40px">
+                        <input type="text" class="form-control" name="Email" placeholder="E-Posta :" />
+                    </div>
+
+                    <div class="col-md-10" style="text-align:center;margin-top:15px;margin-bottom:15px;margin-left:40px">
+                        <input type="text" class="form-control" name="Phone" placeholder="Telefon :" required />
+                    </div>
+                    <div class="col-md-10" style="text-align:center;margin-top:15px;margin-bottom:15px;margin-left:40px">
+                        <input type="password" class="form-control" name="Password" placeholder="Şifre :" required />
+                    </div>
+
+                    <div class="col-md-10 odemediv" style="text-align:center;margin-top:15px;margin-bottom:15px;">
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="padding-left:43px">
+                                    <div class="switch">
+                                        <input id="Sms" type="checkbox" name="Advert" class="switch-input" />
+                                        <label for="Sms" class="switch-label"></label>
+                                    </div>
+                                </td>
+                                <td style="vertical-align:middle;text-align:left;padding-left:5px;">
+                                    Reklam ve Sms Gönderilmesini Kabul Ediyorum.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                    <div class="col-md-10" style="text-align:center;margin-top:15px;margin-bottom:15px;margin-left:37px">
+                        <button type="submit" class="btn btn-danger form-control">Üye Ol</button>
+                    </div>
+
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger" style="margin-top:15px;text-align:center">
+
+                            @Html.Raw(TempData["Error"])
+
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

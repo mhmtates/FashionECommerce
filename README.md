@@ -1,0 +1,6 @@
+​           **Kullanılan Teknolojiler**
+
+---
+
+
+

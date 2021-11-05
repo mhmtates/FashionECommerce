@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Home :: w3layouts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="/Styles/cart.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Styles/owl.carousel.min.css" rel="stylesheet" />
+    <link href="/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Styles/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Scripts/libs/jquery-ui-1.12.0.custom/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Scripts/libs/jquery-ui-1.12.0.custom/jquery-ui.structure.css" rel="stylesheet" />
+    <link href="~/Scripts/libs/jquery-ui-1.12.0.custom/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="/Styles/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet'>
+    <script src="/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/JSONAJAXSEPET.js"></script>
+    <script src="/Scripts/libs/jquery-ui-1.12.0.custom/jquery-ui.js"></script>
+  
+
+</head>
+<body>
+    <div class="header-top-w3layouts">
+        <div class="container">
+            <div class="col-md-3 logo-w3" style="top:40px;">
+                <a href="/Home "><img src="/images/logo2.png" alt=" " /><h1>FASHION CLUB</h1></a>
+            </div>
+            <div class="col-md-5 search-agileinfo " style="margin-bottom:5px;margin-left:350px" >
+                <form action="#" method="post">
+                    <input type="search" name="Search" id="search-text" placeholder="Ürün, kategori veya marka ara" required="" style="padding-left:70px">
+                    <button type="submit" class="btn btn-default search" aria-label="Left Align">
+                        <i class="fa fa-search" aria-hidden="true"> </i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="col-md-4 cart-wthree" style="margin-left:900px;bottom:40px;line-height:20px">
+                <div class="cart">
+                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+                    <script>
+                        $(document).ready(function () {
+                            $("#BasketControl").load("/PartialView/BasketQuantityControl");
+
+                        }
+                    </script>
+                    <a href="/sepet" id="BasketControl" style="font-size:25px;color:#000000; font-weight:bold;">Sepetim</a>
+                </div>
+            </div>
+            
+        </div>
+     </div>
+    <div class="clearfix"></div>
+    <div class="col-md-12 header-bottom-w3ls">
+        <div class="container">
+
+            @await Component.InvokeAsync("Header")
+           
+
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="col-md-12">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="/Scripts/minicart.js"></script>
+    <script>
+                                  w3ls1.render();
+            w3ls1.cart.on('w3sb1_checkout', function (evt) {
+                var items, len, i;
+
+                if (this.subtotal() > 0) {
+                    items = this.items();
+
+                    for (i = 0, len = items.length; i < len; i++) {
+                        items[i].set('shipping', 0);
+                        items[i].set('shipping2', 0);
+                    }
+                }
+            });
+    </script>
+    @await Component.InvokeAsync("Footer");
+<script>
+        $(document).ready(function () {
+            $('#search-text').autocomplete({
+            source:'@Url.Action("AutoComplete", "Product")' ,
+            minLength: 3,
+            delay: 300,
+            open: function () {
+                var width = $('#search-text').css('width')
+                $('.ui-autocomplete').width(width);
+                $('.ui-widget-content').css('padding', '20px 0px');
+                $('.ui-widget-content').css('background', '#ffffff');
+                $('.ui-menu-item-wrapper').css('margin-top', '-20px');
+                $('.ui-widget-content').css('z-index', '2147483647');
+            },
+                select: function (event, ui) {
+                    ui
+                    if (ui.item.type == 0) {
+                        window.location = '/urun/' + ui.item.product.name + '/' + ui.item.product.id;
+                    }
+                    else {
+                        window.location = '/' + ui.item.category.name + '/' + ui.item.category.id;
+                    }
+            }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                console.log(item)
+                if (item.type == 0) {
+                    return $("<li style='border-bottom:1px solid #dad4d4; padding: 5px'>").append("<div class='row' style='margin: -1px 0px;'><div class='col-md-3 col-xs-12'><img src='/images/Products/" + item.product.mainImage + "' style='width:65px;' class='thumbnail' /></div><div class='col-md-9 col-xs-12'><strong>" + item.product.name + "</strong><br><span style='color:#EF483E; font-size:smaller;'>Ürün Kodu: Ürün Kodu</span><br><span style='color:#EF483E; font-size:smaller;'>Fiyat: " + item.product.fiyat + "</span></div></div>").appendTo(ul);
+                }
+                else {
+                    return $("<li style='border-bottom:1px solid #dad4d4; padding: 5px'>").append("<div class='row' style='margin: -1px 0px;'><div class='col-md-12 col-xs-12'><strong>" + item.category.name + "</strong></div></div>").appendTo(ul);
+                }
+                
+            };
+        })
+</script>
+</body>
+</html>

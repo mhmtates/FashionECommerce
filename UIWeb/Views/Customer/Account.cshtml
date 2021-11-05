@@ -1,0 +1,131 @@
+﻿
+@model Entities.Dto.CustomersUpdateDto;
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/_Shared/_LayoutPage.cshtml";
+    
+}
+
+
+
+<div class="col-md-12" style="margin-bottom:15px;margin-top:15px;margin-left:10px;font-weight:bold;font-size:20px">
+    <div class="row">
+        <div class="TextHeader">HESABIM</div>
+    </div>
+</div>
+
+
+<div class="col-md-12 ProductDiv">
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <ul class="HesabimMenu" style="list-style-type:none">
+                <li><a href="/siparislerim">Siparişlerim</a></li>
+                <li><a href="#">İadelerim</a></li>
+                <li><a href="#">Adreslerim</a></li>
+                <li><a href="/uyelik/giris">Çıkış</a></li>
+            </ul>
+
+        </div>
+
+        <div class="col-md-9">
+
+            @if (Model != null)
+            {
+            <form asp-action="Account" asp-controller="Customer" method="post">
+                <div class="col-md-12" style="text-align:center;margin-top:15px;margin-bottom:15px;">
+                    <input type="text" class="form-control" name="Id" value="@Model.Id" hidden />
+                    <input type="text" class="form-control" asp-for="NameSurname" name="NameSurname" value="@Model.NameSurname" placeholder="Adınız Soyadınız :" required />
+                </div>
+                <div class="col-md-12" style="text-align:center;margin-top:15px;margin-bottom:15px;">
+                    <input type="text" class="form-control" asp-for="Email" name="Email" value="@Model.Email" placeholder="E-Mail :" required />
+                </div>
+
+                <div class="col-md-12" style="text-align:center;margin-top:15px;margin-bottom:15px;">
+                    <input type="text" class="form-control" asp-for="Phone " name="Phone" value="@Model.Phone" placeholder="Telefon :" required />
+                </div>
+
+                <div class="col-md-12" style="text-align:center;margin-top:15px;margin-bottom:15px;">
+                    <input type="text" class="form-control" asp-for="City " name="City" value="@Model.City" placeholder="Şehir :" required />
+                </div>
+
+                <div class="col-md-12" style="text-align:center;margin-top:15px;margin-bottom:15px;">
+                    <input type="text" class="form-control" asp-for="District" name="District" value="@Model.District" placeholder="İlçe :" required />
+                </div>
+
+                <div class="col-md-12" style="text-align:center;margin-top:15px;margin-bottom:15px;">
+                    <input type="text" class="form-control" asp-for="FullAddress" name="FullAddress" value="@Model.FullAddress" placeholder="Açık Adres:" required />
+                </div>
+
+                <div class="col-md-12" style="text-align:center;margin-top:15px;margin-bottom:15px;">
+                    <input type="password" class="form-control" asp-for="Password" name="Password" value="@Model.Password" placeholder="Şifre :" required />
+                </div>
+
+
+                <div class="col-md-12" style="margin-bottom:10px;margin-top:10px;">
+                    <select name="Advert" class="form-control">
+                        @if (Model.Advert)
+                        {
+                            <option value="True">Email ve Sms Gönderilsin</option>
+                            <option value="False">Email ve Sms Gönderilmesin</option>
+                        }
+                        else
+                        {
+                            <option value="False">Email ve Sms Gönderilmesin</option>
+                            <option value="True">Email ve Sms Gönderilsin</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-12" style="margin-bottom:10px;margin-top:10px;">
+                    <select name="Gender" class="form-control">
+                        @if (Model.Gender)
+                        {
+                            <option value="True">Erkek</option>
+                            <option value="False">Kadın</option>
+                        }
+                        else
+                        {
+                            <option value="False">Kadın</option>
+                            <option value="True">Erkek</option>
+                        }
+                    </select>
+                </div>
+               <div class="col-md-12" style="text-align:center;margin-top:15px;margin-bottom:15px;">
+                    <button type="submit" class="btn btn-danger form-control">Güncelle</button>
+                </div>
+            </form>
+            
+            <div class="col-md-12">
+                @if (TempData["Message"] != null)
+                {
+
+                    @Html.Raw(TempData["Message"]);
+
+                }
+            </div>
+        }
+       else
+        {
+        
+       <div class="col-md-12" style="padding:20px;text-align:center;font-size:20px"> Kişi bilgileri bulunamadı.</div>
+
+        }
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

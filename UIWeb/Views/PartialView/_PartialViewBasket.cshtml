@@ -1,0 +1,69 @@
+﻿@{ decimal Total = 0;}
+<div style="padding:15px;width:70%;float:left">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Resim</td>
+                <td style="text-align:center">Ürün Adı</td>
+                <td style="text-align:center">Renk/Beden</td>
+                <td style="text-align:center">Birim Fiyat</td>
+                <td style="text-align:center">Adet</td>
+                <td style="text-align:center">Toplam</td>
+                <td>İşlem</td>
+            </tr> 
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    Total+= item.Price * item.Quantity;
+                    <tr>
+                        <td style="padding:5px;width:10%;"><img src="~/images/Products/@item.MainImage" style="width:100%;" /></td>
+                        <td style="vertical-align: middle;text-align:center">@item.Name</td>
+                        <td style="vertical-align:middle;text-align:center"> @item.VariantName</td>
+                        <td style="vertical-align: middle;text-align: center">
+                            @item.Price.ToString("N") TL
+                        </td>
+                        <td style="vertical-align: middle;text-align: center">
+                            <span style="cursor:pointer;" onclick="StokArttirAzalt(@item.Id,0)">-</span>
+                            @item.Quantity
+                            <span style="cursor:pointer;" onclick="StokArttirAzalt(@item.Id,1)">+</span>
+                        </td>
+                        <td style="vertical-align: middle;text-align: center">
+                            @Html.Raw((item.Price * item.Quantity).ToString("N") + " TL")
+                        </td>
+                        <td style="vertical-align: middle;text-align: center"><button type="button" class="btn btn-dark" onclick="JSDeleteBasket(@item.Id)">Sil</button></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div style="padding:15px;width:30%;float:right">
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td>Ara Toplam</td>
+                <td style="text-align:center">@Html.Raw((Total - ((Total * 18) / 100)).ToString("N") + " TL")</td>
+            </tr>
+            <tr>
+                <td>Kdv (%18)</td>
+                <td style="text-align:center">@Html.Raw(((Total * 18) / 100).ToString("N") + " TL")</td>
+            </tr>
+            <tr>
+                <td>Kargo</td>
+                <td style="text-align:center">Ücretsiz</td>
+            </tr>
+            <tr>
+                <td>Toplam</td>
+                <td style="text-align:center">@Total.ToString("N") TL</td>
+            </tr>
+            <tr>
+                <td><a href="/sepet" style="text-align:center" class="btn btn-primary">Alışverişe Devam</a></td>
+                <td><a href="/Odeme" style="text-align:center" class="btn btn-danger">Ödemeye Geç</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

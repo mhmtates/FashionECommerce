@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Shared/_LayoutPage.cshtml";
+
+}
+<div class="sub-banner">
+</div>
+<div class="contact">
+    <div class="container">
+        <h3>İletişim</h3>
+        <div class="col-md-3 col-sm-3 contact-left">
+            <div class="address">
+                <h4>ADRES</h4>
+                <h5>345 Setwant natrer,</h5>
+                <h5>Washington. United States.</h5>
+            </div>
+            <div class="phone">
+                <h4>TELEFON</h4>
+                <h5>+1(401) 1234 567.</h5>
+                <h5>+1(804) 4261 150.</h5>
+            </div>
+            <div class="email">
+                <h4>E-POSTA</h4>
+                <h5><a href="mailto:info@example.com">example@gmail.com</a></h5>
+                <h5><a href="mailto:info@example.com">example2@yahoo.com</a></h5>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-9 contact-right">
+            <form action="#" method="post">
+                <input type="text" name="your namesurname" placeholder="Adınız Soyadınız:" required=" ">
+                <input type="text" name="your email" placeholder="E-Posta:" required=" ">
+                <input type="text" name="your subject" placeholder="Konu:" required=" ">
+                <input type="text" name="your phone number" placeholder="Telefon:" required=" ">
+                <textarea name="your message" placeholder="Mesajınız:" required=" "></textarea>
+                <input type="submit" value="Gönder">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- newsletter -->
+<div class="newsletter">
+    <div class="container">
+        <div class="col-md-6 w3agile_newsletter_left">
+            <h2>E-Bülten</h2>
+            <p>Moda haberlerini takip etmek ve indirim fırsatlarından haberdar olmak için e-bültenimize üye olun.</p>
+        </div>
+        <div class="col-md-6 w3agile_newsletter_right">
+            <form action="#" method="post">
+                <input type="email" name="Email" value="E-posta adresinizi girin." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-posta adresinizi girin.';}" required="">
+                <input type="submit" value="Üye Ol" />
+            </form>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!-- //newsletter -->
