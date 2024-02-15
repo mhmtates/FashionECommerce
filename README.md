@@ -1,4 +1,4 @@
- **Infotech Akademi Yazılım Uzmanlığı Kursu FashionClub Giyim ve Kozmetik E-Ticaret Sitesi**
+ **Infotech Akademi Yazılım Uzmanlığı Kursu FashionClub E-Ticaret Sitesi**
 
 <u>**Proje Açıklaması**</u>
 
